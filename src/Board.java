@@ -91,14 +91,14 @@ public class Board {
         return new Board(clone);
     }
 
-    public void method() {
+    public Node method() {
         PriorityQueue<Node> queue = new PriorityQueue<>();
         queue.add(new Node(this, 0, null));
         while (true) {
             Node node = queue.poll();
             int prevHeight = node.getLength();
             if (node.board.manhattan() == 0)
-                return;
+                return node;
             else {
                 queue.add(new Node(exchange(0), prevHeight + 1, node));
                 queue.add(new Node(exchange(1), prevHeight + 1, node));
@@ -106,6 +106,7 @@ public class Board {
                 queue.add(new Node(exchange(3), prevHeight + 1, node));
             }
         }
+
     }
 }
 
